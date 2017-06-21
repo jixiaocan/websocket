@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- first day -->
+	<bean id="helloWorld" class="com.a_hello.HelloWorld"></bean>
+	<!-- second day -->
+	<bean id="zhangsan" class="com.b_hello2.ZhangSan"></bean>
+	<bean id="lisi" class="com.b_hello2.Lisi"></bean>
+	<bean id="javaWork" class="com.b_hello2.JavaWork">
+		<property name="tester" ref="zhangsan"></property>
+	</bean>
+	
+	<!-- third day -->
+	<bean id="people" class="com.c_createBean.People"></bean>
+	<bean id="people2" class="com.c_createBean.People">
+		<property name="id" value="1"></property>
+		<property name="name" value="张三"></property>
+		<property name="age" value="11"></property>
+	</bean>
+	
+	<bean id="people3" class="com.c_createBean.People">
+		<constructor-arg type="int" value="2"></constructor-arg>
+		<constructor-arg type="String" value="李四"></constructor-arg>
+		<constructor-arg type="int" value="22"></constructor-arg>
+	</bean>
+	
+	<bean id="people4" class="com.c_createBean.People">
+		<constructor-arg index="0" value="3"></constructor-arg>
+		<constructor-arg index="1" value="王五"></constructor-arg>
+		<constructor-arg index="2" value="55"></constructor-arg>
+	</bean>
+	
+	<bean id="people5" class="com.c_createBean.People">
+		<constructor-arg index="0" type="int" value="4"></constructor-arg>
+		<constructor-arg index="1" type="String" value="招六"></constructor-arg>
+		<constructor-arg index="2" type="int" value="66"></constructor-arg>
+	</bean>
+	
+	<bean id="peopleFactory" class="com.c_createBean.PeopleFactory"></bean>
+	
+	<bean id="people7" factory-bean="peopleFactory" factory-method="createPeople"></bean>
+  
+  	<bean id="people8" class="com.c_createBean.PeopleFactory2" factory-method="createPeople"></bean>
+	
+</beans>

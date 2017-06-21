@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+        
+        default-autowire="byType">
+        <!-- 
+        	default-autowire 的类型有 byName,byType,constructor；
+			byName：通过名称进行自动匹配；
+			byType：根据类型进行自动匹配；
+			constructor：和 byType 类似，只不过它是根据构造方法注入而言的，根据类型，自动注入；
+         -->
+
+	<bean id="people1" class="com.e_autowire.People">
+		<property name="id" value="1"></property>
+		<property name="name" value="张三"></property>
+		<property name="age" value="11"></property>
+	</bean>
+	
+	<bean id="dog1" class="com.e_autowire.Dog">
+		<property name="name" value="Jack"></property>
+	</bean>
+</beans>

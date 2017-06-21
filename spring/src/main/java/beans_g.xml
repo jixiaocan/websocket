@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<bean id="studentService" class="com.g_aop.StudentServiceImpl"></bean>
+	
+	<bean id="studentServiceAspect" class="com.g_aop2.StudentServiceAspect"></bean>
+	
+	<aop:config>
+		<aop:aspect id="studentServiceAspect" ref="studentServiceAspect">
+			<aop:pointcut expression="execution(* com.g_aop.*.*(..))" id="businessService"/>
+			<aop:before method="doBefore" pointcut-ref="businessService"/>
+			<aop:after method="doAfter" pointcut-ref="businessService"/>
+			<aop:around method="doAround" pointcut-ref="businessService"/>
+			<aop:after-returning method="doAfterReturning" pointcut-ref="businessService"/>
+			<aop:after-throwing method="doAfterThrowing" pointcut-ref="businessService" throwing="ex"/>
+		</aop:aspect> 
+	</aop:config>
+</beans>
